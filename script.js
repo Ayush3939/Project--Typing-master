@@ -1,6 +1,6 @@
-// Sample texts for different difficulty levels
 const texts = {
     beginner: [
+        "Hello how are you?",
         "The quick brown fox jumps over the lazy dog.",
         "A quick brown fox jumps over the lazy dog.",
         "The lazy dog sleeps in the sun.",
@@ -23,7 +23,7 @@ const texts = {
     ]
 };
 
-// DOM Elements
+
 const textDisplay = document.getElementById('textDisplay');
 const inputField = document.getElementById('inputField');
 const startBtn = document.getElementById('startBtn');
@@ -32,24 +32,24 @@ const wpmDisplay = document.getElementById('wpm');
 const accuracyDisplay = document.getElementById('accuracy');
 const timeDisplay = document.getElementById('time');
 
-// Navigation Elements
+
 const practiceBtn = document.getElementById('practiceBtn');
 const learnBtn = document.getElementById('learnBtn');
 const statsBtn = document.getElementById('statsBtn');
 
-// Section Elements
+
 const practiceSection = document.getElementById('practiceSection');
 const learnSection = document.getElementById('learnSection');
 const statsSection = document.getElementById('statsSection');
 
-// Variables
+
 let currentText = '';
 let startTime;
 let timer;
 let isTyping = false;
 let currentDifficulty = 'beginner';
 
-// Navigation
+
 practiceBtn.addEventListener('click', () => switchSection('practice'));
 learnBtn.addEventListener('click', () => switchSection('learn'));
 statsBtn.addEventListener('click', () => switchSection('stats'));
@@ -80,7 +80,7 @@ function switchSection(section) {
     }
 }
 
-// Typing functionality
+
 startBtn.addEventListener('click', startTyping);
 resetBtn.addEventListener('click', resetTyping);
 inputField.addEventListener('input', checkTyping);
@@ -125,13 +125,12 @@ function updateTimer() {
     const timeElapsed = Math.floor((currentTime - startTime) / 1000);
     timeDisplay.textContent = `${timeElapsed}s`;
     
-    // Calculate WPM
+    
     const wordsTyped = inputField.value.trim().split(/\s+/).length;
     const minutes = timeElapsed / 60;
     const wpm = Math.round(wordsTyped / minutes);
     wpmDisplay.textContent = wpm;
     
-    // Calculate Accuracy
     const accuracy = calculateAccuracy(inputField.value, currentText);
     accuracyDisplay.textContent = `${accuracy}%`;
 }
@@ -150,7 +149,6 @@ function getRandomText(difficulty) {
     return textArray[Math.floor(Math.random() * textArray.length)];
 }
 
-// Learning modules
 document.querySelectorAll('.start-module').forEach(button => {
     button.addEventListener('click', () => {
         const module = button.closest('.module');
@@ -160,7 +158,7 @@ document.querySelectorAll('.start-module').forEach(button => {
     });
 });
 
-// Statistics
+
 let stats = {
     sessions: [],
     bestWpm: 0,
@@ -175,24 +173,24 @@ function updateStats() {
     stats.sessions.push({ wpm, accuracy });
     stats.bestWpm = Math.max(stats.bestWpm, wpm);
     
-    // Update average WPM
+    
     const totalWpm = stats.sessions.reduce((sum, session) => sum + session.wpm, 0);
     stats.averageWpm = Math.round(totalWpm / stats.sessions.length);
     
-    // Update average accuracy
+   
     const totalAccuracy = stats.sessions.reduce((sum, session) => sum + session.accuracy, 0);
     stats.averageAccuracy = Math.round(totalAccuracy / stats.sessions.length);
     
-    // Update display
+    
     document.getElementById('avgWpm').textContent = stats.averageWpm;
     document.getElementById('bestWpm').textContent = stats.bestWpm;
     document.getElementById('avgAccuracy').textContent = `${stats.averageAccuracy}%`;
     
-    // Save stats to localStorage
+   
     localStorage.setItem('typingStats', JSON.stringify(stats));
 }
 
-// Load saved stats
+
 function loadStats() {
     const savedStats = localStorage.getItem('typingStats');
     if (savedStats) {
@@ -200,5 +198,5 @@ function loadStats() {
     }
 }
 
-// Initialize
+
 loadStats();
