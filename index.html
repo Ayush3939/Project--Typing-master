@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Master - Learn to Type</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Typing Master</h1>
+            <nav>
+                <button id="practiceBtn" class="active">Practice</button>
+                <button id="learnBtn">Learn</button>
+                <button id="statsBtn">Statistics</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Practice Section -->
+            <section id="practiceSection" class="active-section">
+                <div class="typing-area">
+                    <div class="text-display" id="textDisplay"></div>
+                    <textarea id="inputField" placeholder="Start typing here..." disabled></textarea>
+                    <div class="controls">
+                        <button id="startBtn">Start</button>
+                        <button id="resetBtn">Reset</button>
+                    </div>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span>WPM:</span>
+                        <span id="wpm">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Accuracy:</span>
+                        <span id="accuracy">0%</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Time:</span>
+                        <span id="time">0s</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Learning Section -->
+            <section id="learnSection" class="hidden">
+                <div class="learning-modules">
+                    <div class="module" data-level="beginner">
+                        <h3>Beginner</h3>
+                        <p>Learn the basics of touch typing</p>
+                        <button class="start-module">Start</button>
+                    </div>
+                    <div class="module" data-level="intermediate">
+                        <h3>Intermediate</h3>
+                        <p>Improve your speed and accuracy</p>
+                        <button class="start-module">Start</button>
+                    </div>
+                    <div class="module" data-level="advanced">
+                        <h3>Advanced</h3>
+                        <p>Master complex typing patterns</p>
+                        <button class="start-module">Start</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Section -->
+            <section id="statsSection" class="hidden">
+                <div class="stats-overview">
+                    <h2>Your Progress</h2>
+                    <div class="progress-chart">
+                        <!-- Chart will be added via JavaScript -->
+                    </div>
+                    <div class="stats-details">
+                        <div class="stat-card">
+                            <h3>Average WPM</h3>
+                            <p id="avgWpm">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Best WPM</h3>
+                            <p id="bestWpm">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Average Accuracy</h3>
+                            <p id="avgAccuracy">0%</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
